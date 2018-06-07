@@ -1,9 +1,7 @@
-# csc648-team11
-
-App URL: [https://csc648-team11.herokuapp.com/](https://csc648-team11.herokuapp.com/)
+#team11
 
 ### TODO
-Updated: 03/30/2018
+Updated: 05/23/2018
 
 **Backend**
 - [x] image upload functionality  
