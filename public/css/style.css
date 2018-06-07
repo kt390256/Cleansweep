@@ -1,0 +1,32 @@
+/**
+ *
+ * @author  CSC 648 Team 11
+ * @version 1.0.0 03/30/2018
+ */
+.custom-select {
+  height: initial;
+}
+
+.affix {
+  position:fixed;
+  top: 90px;
+  right: 0px;
+  left: 0px;
+  z-index: 9999;
+}
+
+.modal-header, .close {
+  background-color: #007bff;
+  color:white !important;
+  text-align: center;
+  font-size: 30px;
+}
+.modal-footer {
+  background-color: #f9f9f9;
+}
+
+@media screen and (max-width: 767px) {
+  .mobile-space {margin-bottom:10px;}
+  .mobile-header-text {font-size: 22px;}
+  .mobile-p-text {font-size:14px;}
+}

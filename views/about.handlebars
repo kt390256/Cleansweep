@@ -1,0 +1,55 @@
+<!---
+@author  CSC 648 Team 11
+@version 1.0.0 04/13/2018
+--->
+<div class="pricing-header w-75 px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+  <h1 class="display-4">About Cleansweep</h1>
+  <p class="lead"> Help improve your city parks and live in a cleaner world!</p>
+  <p>Here at Cleansweep, our team has designed this website to allow you to find environmental problems in nearby parks, as well as report a wide range of issues for them.</p>
+  <p class="d-none d-md-block">We partner with the city to catalog and resolve issues you and other residents bring to our attention. Cleansweep is easy to use across all your devices and is intuitive and reliable.</p>
+  <p class="d-none d-md-block">We serve all members of the community; anyone with access to the internet can find and/or report environmental issues through our website, allowing the city to see real time data on critical issues before they start to impact your community.</p>
+  <p>See below for more information on the members of our team!</p>
+</div>
+
+<div class="container">
+  <div class="card-deck mb-3 text-center">
+
+    {{#each data}}
+      {{#if (ifCondition id)}}
+      <div class="card mb-4 box-shadow">
+        <div class="card-header bg-white">
+          <h4 class="my-0 font-weight-normal">{{firstName}} {{lastName}}</h4>
+        </div>
+        <div class="card-body bg-white">
+          <h1 class="card-title pricing-card-title">{{ title }}</h1>
+          <ul class="list-unstyled mt-3 mb-4 d-none d-md-block">
+            <li>{{hobbies}}</li>
+          </ul>
+          <a class="btn btn-lg btn-block btn-outline-primary" href="/users/{{id}}" role="button">Learn More</a>
+        </div>
+      </div>
+      {{/if}}
+      {{/each}}
+  </div>
+
+  <div class="card-deck mb-3 text-center">
+
+    {{#each data}}
+      {{#unless (ifCondition id)}}
+      <div class="card mb-4 box-shadow">
+        <div class="card-header bg-white">
+          <h4 class="my-0 font-weight-normal">{{firstName}} {{lastName}}</h4>
+        </div>
+        <div class="card-body bg-white">
+          <h1 class="card-title pricing-card-title">{{ title }}</h1>
+          <ul class="list-unstyled mt-3 mb-4 d-none d-md-block">
+            <li>{{hobbies}}</li>
+          </ul>
+          <a class="btn btn-lg btn-block btn-outline-primary" href="/users/{{id}}" role="button">Learn More</a>
+        </div>
+      </div>
+      {{/unless}}
+      {{/each}}
+  </div>
+
+</div>

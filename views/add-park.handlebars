@@ -1,0 +1,75 @@
+<!---
+@author  CSC 648 Team 11
+@version 1.0.0 03/30/2018
+--->
+<div class="container">
+  <div class="py-3 text-center">
+    <h2>Add Park</h2>
+    {{ errors }}
+  </div>
+  <div class="row justify-content-md-center">
+    <div class="col-md-8">
+      <form class="needs-validation" novalidate="" action="/add-park" method="POST">
+        <div class="mb-3">
+          <label for="parkName">Park Name</label>
+          <input type="text" class="form-control" name="parkName" id="titparkNamele" placeholder="Example: Golden Gate Park" required="">
+          <div class="invalid-feedback">
+            Please enter a park name.
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label for="zipcode">Zip Code(s)</label>
+          <input type="text" class="form-control" name="zipcode" id="zipcode" pattern="^[0-9]{5}(?:-[0-9]{4})?$" placeholder="Example: 945332,234234,2342323," required="">
+          <div class="invalid-feedback">
+            Please enter a valid zip code.
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label for="description">Park Description</label>
+          <input type="text" class="form-control" name="description" id="description" pattern="^.{1,100}" placeholder="Dog Friendly, Closed at 10PM">
+          <div class="invalid-feedback">
+            Please enter a park description up to 100 characters.
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-6 mb-3">
+            <label for="city">City</label>
+            <input type="text" class="form-control" name="city" id="city" pattern="^[a-zA-Z ]+" placeholder="San Jose" value="" required="">
+            <div class="invalid-feedback">
+              Valid City is required.
+            </div>
+          </div>
+          <div class="col-md-6 mb-3">
+            <label for="state">State</label>
+            <input type="text" class="form-control" name="state" id="state" pattern="[a-zA-Z ]+" placeholder="CA" value="" required="">
+            <div class="invalid-feedback">
+              Valid State is required.
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-6 mb-3">
+            <label for="lat">Lat</label>
+            <input type="text" class="form-control" name="lat" id="lat" pattern="^[1-9]\d*(\.\d+)?$" placeholder="" value="" required="">
+            <div class="invalid-feedback">
+              Valid latititude is required.
+            </div>
+          </div>
+          <div class="col-md-6 mb-3">
+            <label for="lon">lon</label>
+            <input type="text" class="form-control" name="lon" id="lon" pattern="^[1-9]\d*(\.\d+)?$" placeholder="" value="" required="">
+            <div class="invalid-feedback">
+              Valid longitude is required.
+            </div>
+          </div>
+        </div>
+
+        <button class="btn btn-primary btn-lg btn-block mb-4" type="submit">Add</button>
+      </form>
+    </div>
+  </div>
+</div>

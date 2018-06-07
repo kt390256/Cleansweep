@@ -1,0 +1,103 @@
+<!---
+@author  CSC 648 Team 11
+@version 1.0.0 04/07/2018
+--->
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="{{ description }}">
+    <meta name="author" content="CSC 648 Team">
+    <link rel="icon" href="../img/favicon.ico">
+
+    <title> {{ title }} </title>
+
+    {{#each css}}
+    <link rel="stylesheet" href="../css/{{ this }}">
+    {{/each}}
+
+
+    {{#each js}}
+    <script src="../js/{{ this }}"></script>
+    {{/each}}
+
+</head>
+<body class="bg-light">
+  <div class="alert alert-danger alert-dismissible fade show text-center" role="alert">
+    <p class="lead"><strong>For Demonstration Only</strong></p>
+    <i><small>SFSU Software Engineering Project, Spring 2018, CSC 648-02, Team 11.</small></i>
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="navbar navbar-dark bg-dark sticky-top">
+    <h5 class="navbar-header font-weight-normal"><a href="/"><img src="../img/cleansweep-logo.png" /></a></h5>
+    <nav class="navbar-right">
+      {{#if user.id }}
+      <div class="dropdown">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          {{user.username}}
+        </button>
+        <div class="dropdown-menu bg-dark" aria-labelledby="dropdownMenuButton">
+          <a class="btn text-primary" href="/report-issue">Report Issue</a>
+          <a class="btn text-white text-center" style="opacity:0.7;" href="/dashboard">Dashboard</a>          
+          <div class="dropdown-divider"></div>
+          <a class="btn text-white" style="opacity:0.7;" href="/logout">Logout</a>          
+        </div>
+      </div>
+      {{else}}
+      <a class="btn btn-outline-success" href="/sign-up">Sign up</a>
+      <a class="btn btn-outline-primary" href="/login">Login</a>
+      {{/if}}
+    </nav>
+  </div>
+
+  {{{body}}}
+
+
+  <div class="mt-md-auto d-flex flex-column align-items-center p-2 px-md-4 bg-light border-top box-shadow">
+    <nav class="my-2 my-md-0">
+      <a class="p-1 text-dark" href="/about">About</a>
+      <a class="p-1 text-dark" href="/terms-of-use">Terms of Use</a>
+    </nav>
+  </div>
+
+
+
+
+  <script>
+    (function() {
+      'use strict';
+      window.addEventListener('load', function() {
+        // Fetch all the forms we want to apply custom Bootstrap validation styles to
+        var forms = document.getElementsByClassName('needs-validation');
+        // Loop over them and prevent submission
+        var validation = Array.prototype.filter.call(forms, function(form) {
+          form.addEventListener('submit', function(event) {
+            if (form.checkValidity() === false) {
+              event.preventDefault();
+              event.stopPropagation();
+              }
+              form.classList.add('was-validated');
+          }, false);
+        });
+      }, false);
+    })();
+  </script>
+
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-117530322-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-117530322-1');
+  </script>
+</body>
+</html>

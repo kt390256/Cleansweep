@@ -1,0 +1,55 @@
+<!--
+@author  CSC 648 Team 11
+@version 1.0.0 04/20/2018
+-->
+<div class="jumbotron mb-3 px-3 py-2 pt-md-3 pb-md-2 mx-auto">
+  <div class="text-center">
+    <h1 class="display-4 mobile-header-text">Welcome to Cleansweep</h1>
+    <p class="lead mobile-p-text">The purpose of this site is to search or report environmental issues in your area. We provide a simple and effective way to find and report environmental issues within San Francisco's parks.</p>
+    <a class="btn btn-lg btn-secondary mobile-space d-block d-md-none" href="/report-issue">Report Issue</a>
+    <div class="row">
+      <a class="offset-lg-1 mr-1 btn btn-outline-primary btn-lg d-none d-lg-block" href="/about">About</a>
+      <a class="mobile-space offset-xs-1 offset-md-1 offset-lg-0 btn btn-secondary btn-lg d-none d-md-block" href="/report-issue">Report Issue</a>        
+      <form class="mobile-left needs-validation col-xs-10 col-md-8 col-lg-7 col-xl-8">
+        <div class="input-group input-group-lg">          
+          <div class="input-group-prepend">
+            <select class="custom-select d-none d-sm-block" id="category">
+              {{#each cNames}}
+              <option value="{{name}}">{{name}}</option>
+              {{/each}}
+            </select>
+          </div>
+          <input id="search" type="text" class="form-control" placeholder="Zip, Park Name, or Issue Name" aria-label="Search" aria-describedby="Search Info">
+            {{!-- <button id="searchButton" class="btn btn-outline-primary btn-lg col-xs-1 offset-xs-5" type="submit">Search</button> --}}
+          <button id="searchButton" class="input-group-append btn-outline-secondary btn-lg" type="submit">
+            <i class="fa fa-search"></i>
+          </button>
+            <div class="invalid-tooltip">
+                Please limit your search up to 40 alphanumeric characters.
+            </div>            
+        </div>
+      </form>
+    </div> 
+  </div>
+</div>
+<div class="container-fluid">
+  <div class="row">
+    <div class="offset-sm-1 col-sm-10" id="results">
+      <h3 class="text-center">Recent Issues </h3>
+      {{#each issues}}
+        <div class="card flex-md-row mb-4 box-shadow h-md-250 bg-light">
+          <a target="_blank" href="/issue-detail/{{id}}"><img class="card-img-left flex-auto d-none d-xl-block" src="https://s3.us-east-2.amazonaws.com/csc648/{{img}}" style="width:350px; height:250px;" alt="{{description}}"></a>
+          <div class="card-body d-flex flex-column align-items-start">
+            <strong class="d-inline-block mb-2 text-secondary">{{title}}</strong>
+            <p class="mb-2 d-none d-sm-block"><strong>Issue Category:</strong> {{issueType}} </p>
+            <p><strong>Location:</strong> <span class="mb-1 text-muted">{{parkName}}</span></p>
+            <p class="d-none d-md-block"><strong>Last Update:</strong> <span class="mb-1 text-muted">{{updatedAt}}</span></p>
+            <strong>Status: <span class="badge {{statusString status}}"> {{status}} </span></strong>
+            <a class ="btn btn-outline-secondary my-1" target="_blank" href="/issue-detail/{{id}}">More Details</a>
+          </div>
+          <a target="_blank" href="/issue-detail/{{id}}"><img class="card-img-right flex-auto d-none d-md-block" src="https://maps.googleapis.com/maps/api/staticmap?center={{parkNameEncoded}}&zoom=13&size=250x250&key=AIzaSyBrbVWz2N4cUR105dWBB2pa-aNKfXrXCC4&markers=size:mid%7Ccolor:0xff0000%7Clabel:%7C{{parkNameEncoded}}" style="width:250px; height:250px;" alt="{{description}}"></a>
+        </div>
+      {{/each}}
+    </div>
+  </div>
+</div>

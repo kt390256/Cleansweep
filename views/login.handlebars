@@ -1,0 +1,43 @@
+<!---
+@author  CSC 648 Team 11
+@version 1.0.0 03/30/2018
+--->
+<form class="form-signin" novalidate="" action="/dashboard" method="POST">
+  <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+
+  <label for="username" class="sr-only">Username</label>
+  <input type="text" id="username" name="username" class="form-control" pattern="^.{1,50}" placeholder="Username" required="" autofocus="">
+  <div class="invalid-feedback">
+    Please enter a username.
+  </div>
+
+  <label for="password" class="sr-only">Password</label>
+  <input type="password" id="password" name="password" class="form-control" pattern=".{8,20}" placeholder="Password" required="">
+  <div class="invalid-feedback">
+    Please enter a password.
+  </div>
+
+  <button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>
+
+  <p class="mt-5 mb-3 text-muted">&copy; 2018</p>
+</form>
+
+<script>
+  (function() {
+    'use strict';
+    window.addEventListener('load', function() {
+    // Fetch all the forms we want to apply custom Bootstrap validation styles to
+    var forms = document.getElementsByClassName('form-signin');
+    // Loop over them and prevent submission
+    var validation = Array.prototype.filter.call(forms, function(form) {
+      form.addEventListener('submit', function(event) {
+          if (form.checkValidity() === false) {
+            event.preventDefault();
+            event.stopPropagation();
+          }
+          form.classList.add('was-validated');
+        }, false);
+      });
+    }, false);
+  })();
+</script>

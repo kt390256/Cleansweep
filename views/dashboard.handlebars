@@ -1,0 +1,111 @@
+<!---
+@author  CSC 648 Team 11
+@version 1.0.0 03/30/2018
+--->
+<div class="container">
+
+  <div class="row">
+    <div class="col-lg-12">
+      <h1>Welcome, {{ user.firstName }} {{ user.lastName}}</h1>
+    </div>
+    <div class="col-lg-12">
+      <div class="btn-group" role="group">
+        <a class="btn btn-outline-info" href="/add-park">Add Park</a>
+        <a class="btn btn-outline-info" href="/report-issue">Report Issue</a>
+        <a class="btn btn-outline-info" href="/">Search</a>
+      </div>
+    </div>
+  </div>
+</div>
+<br>
+<div class="container" style="overflow-x:auto;">
+    <table class="table sortable table-bordered table-hover table-condensed">
+      <thead>
+        <tr>
+          <th data-defaultsort="AZ">Author</th>
+          <th data-defaultsort="AZ" data-sortcolumn="4">Park Name</th>
+          <th data-defaultsign="AZ" data-sortcolumn="2">Category</th>
+          <th data-defaultsign="AZ" data-sortcolumn="3">Status</th>
+          <th data-defaultsort="disabled">View Report</th>
+          <th data-defaultsort="disabled">Change Category</th>
+          <th data-defaultsort="disabled">Change Status</th>
+          <th data-defaultsort="disabled">Delete Report</th>
+          <th data-sortcolumn="1">Date Submitted</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each issues}}
+        <tr id="issue-{{id}}">
+          <td>{{author}}</td>
+          <td>{{parkName}}</td>
+          <td>{{issueType}}</td>
+          <td>{{status}}</td>
+          <td><a class="btn btn-outline-info" href="/issue-detail/{{id}}">Report Details</a></td>
+          <td>
+            <div class="dropdown">
+              <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="categoryDD" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Change Category
+              </button>
+              <div class="dropdown-menu" aria-labelledby="categoryDD">
+                <form id="janitorialCategory"action="/issue/category/{{id}}/Janitorial" method="POST">
+                  <button class="dropdown-item">Janitorial</button>
+                </form>
+                <form id="maintenanceCategory"action="/issue/category/{{id}}/Maintenance" method="POST">
+                  <button class="dropdown-item">Maintenance</button>
+                </form>
+                <form id="dumpingCategory"action="/issue/category/{{id}}/Dumping" method="POST">
+                  <button class="dropdown-item">Dumping</button>
+                </form>
+                <form id="hazardCategory"action="/issue/category/{{id}}/Hazard" method="POST">
+                  <button class="dropdown-item">Hazard</button>
+                </form>
+                <form id="otherCategory" action="/issue/category/{{id}}/Other" method="POST">
+                  <button class="dropdown-item">Other</button>
+                </form>
+              </div>
+            </div>
+          </td>
+          <td>
+            <div class="dropdown">
+              <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="statusDD" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Change Status
+              </button>
+              <div class="dropdown-menu" aria-labelledby="statusDD">
+                <form id="progressIssue" action="/issue/update/{{id}}/In-Progress" method="POST">
+                  <button class="dropdown-item">In Progress</button>
+                </form>
+                <form id="completeIssue" action="/issue/update/{{id}}/Complete" method="POST">
+                  <button class="dropdown-item">Complete</button>
+                </form>
+              </div>
+            </div>
+          </td>
+          <form id="deleteIssue" action="/issue/delete/{{id}}" method="POST">
+            <td><button id='{{author}}' class="delete btn btn-danger">Delete</button></td>
+          </form>
+
+          <td>{{updatedAt}}</td>
+        </tr>
+        {{/each}}
+      </tbody>
+    </table>
+</div>
+
+<script>
+
+  $(document).ready(function(){
+
+    const author = '{{issue.author}}';
+    const user = '{{user.username}}';
+
+    if(user===author || user=="admin" || user=="citymanager"){
+      console.log("Same");
+      $("#deleteIssue").show();
+    }
+    else{
+      console.log("Not the same");
+      $("#deleteIssue").hide();
+    }
+  });
+
+</script>

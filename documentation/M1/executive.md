@@ -1,0 +1,5 @@
+Improve your city parks, clear your roadways, and allow your kids to breathe cleaner air. All this can be accomplished with Cleansweep. Our small team has designed a cross platform application allowing you to report and manage a wide range of environmental issues across your city or even region.  Cleansweep is set apart from the rest of the competition by our key functionalities such as ease of use across devices, intuitive interfaces, and reliability.
+
+Our software serves all members of your community, for anyone with access to the internet can report an environmental issue to Cleansweep thereby allowing the city manager to see real time data on critical issues. Unclog water drains, clean up waste, and much more, all before it starts to impact those in your community. Our inbound marketing strategy is to reach out to your community members via social networks, email, and posters located in key areas throughout your community.
+
+Our small team of 6 has over 30 hours of combined experience in developing and deploying software.  We care about our community and are dedicated to make it better which is why we are set to make Cleansweep a reality.
